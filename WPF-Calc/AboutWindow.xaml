@@ -1,0 +1,22 @@
+﻿<Window x:Class="WPF_Calc.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Calc"
+        mc:Ignorable="d"
+        Title="AboutWindow" Height="300" Width="400">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/J1 (32).jpg"/>
+        </Grid.Background>
+        <Grid HorizontalAlignment="Left" Height="95" Margin="165,142,0,0" VerticalAlignment="Top" Width="225">
+            <Grid.Background>
+                <SolidColorBrush Color="White" Opacity="0"/>
+            </Grid.Background>
+            <Label Content="Nazwa programu: WPF-Calc" Margin="-168,-145,253,206" FontFamily="Bahnschrift Light" FontSize="10" FontWeight="Bold"/>
+            <Label Content="Autor: Muharax" Margin="-168,-128,184,181" FontFamily="Bahnschrift Light" FontSize="10" FontWeight="Bold"/>
+        </Grid>
+
+    </Grid>
+</Window>
