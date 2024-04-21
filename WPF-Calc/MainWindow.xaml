@@ -5,18 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Calc"
         mc:Ignorable="d"
-        Title="WPF_Calc" Height="400" Width="270" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="WPF_Calc" Height="400" Width="270" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="{x:Null}">
 
-    <Grid>
 
-        <Menu>
-            <MenuItem Header="Ustawienia">
-                <MenuItem Header="Wygląd" Click="MenuItem_Option1_Click"/>
-                <MenuItem Header="Wyświetlanie" Click="MenuItem_Option2_Click"/>
+    <Grid x:Name="MAIN">
+        <Menu RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Margin="-1,0,1,0">
+            <Menu.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="1.115"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.731"/>
+                </TransformGroup>
+            </Menu.RenderTransform>
+            <MenuItem Header="Ustawienia" Padding="6,0,6,0" Cursor="Pen" >
+                <!--<MenuItem Header="Wygląd" Click="MenuItem_Option1_Click"/>-->
+                <MenuItem Header="Preferencje" Click="MenuItem_Option2_Settings" Cursor="Pen"/>
             </MenuItem>
-            <MenuItem Header="Info">
-                <MenuItem Header="o Programie" Click="MenuItem_Option3_AboutWindow"/>
+            
+            
+            <MenuItem Header="Info" Cursor="Pen">
+                <MenuItem Header="o Programie" Click="MenuItem_Option3_AboutWindow" Cursor="Pen" />
             </MenuItem>
+            
+            
         </Menu>
 
         <Button Content="1" Margin="14,297,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left"/>
@@ -31,7 +43,7 @@
         <Button Content="C" Margin="14,199,0,0" VerticalAlignment="Top" Width="53" Click="Button_Clear_Click" Height="19" HorizontalAlignment="Left"/>
         <Button Content="(" Margin="14,224,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left"/>
         <Button Content=")" Margin="73,224,0,0" VerticalAlignment="Top" Width="53"  Click="Button_Click" Height="19" HorizontalAlignment="Left"/>
-        <Button Content="%" Margin="131,224,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" IsEnabled="False" Height="19" HorizontalAlignment="Left"/>
+        <Button Content="%" Margin="131,224,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left"/>
         <Button Content="+" Margin="190,297,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left"/>
         <Button Content="-" Margin="190,273,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left"/>
         <Button Content="*" Margin="190,249,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left"/>
@@ -39,8 +51,8 @@
         <Button Content="0" Margin="73,321,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left"/>
         <Button Content="," Margin="131,321,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left"/>
         <Button Content="=" Margin="190,321,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left"/>
-        <TextBox x:Name="txtResult" HorizontalAlignment="Center" Margin="0,139,0,0" Text="0" Width="231" Height="34" FontSize="20" VerticalAlignment="Top" HorizontalContentAlignment="Right"/>
-        <Button Content="&lt;" Margin="14,321,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="1,1,1,1" UseLayoutRounding="True" IsEnabled="False" Height="20" HorizontalAlignment="Left"/>
+        <TextBox x:Name="txtResult" HorizontalAlignment="Center" Margin="0,139,0,0" Text="0" Width="231" Height="34" FontSize="20" VerticalAlignment="Top" HorizontalContentAlignment="Right" IsEnabled="False"/>
+        <Button Content="CE" Margin="14,321,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="1,1,1,1" UseLayoutRounding="True" Height="20" HorizontalAlignment="Left"/>
         <TextBox x:Name="txtRead" Margin="0,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="98" IsEnabled="False" HorizontalAlignment="Center" />
 
 
