@@ -50,6 +50,19 @@ namespace WPF_Calc
             {
                 try
                 {
+                    // Sprawdź, czy wyrażenie zawiera operacje specjalne
+                    if (expression.Contains("%"))
+                    {
+                        expression = HandlePercentage(expression);
+                        return expression;
+                    }
+                    else if (expression.Contains("^"))
+                    {
+                        expression = HandlePower(expression);
+                        return expression;
+                    }
+
+
                     // Wykonaj obliczenia
                     DataTable dt = new DataTable();
                     var result = dt.Compute(expression, "");
@@ -63,7 +76,136 @@ namespace WPF_Calc
                     return "Błąd: " + ex.Message;
                 }
             }
+
+
+
+
+
+
+
+
+
+
+
+            private static string HandlePercentage(string expression)
+            {
+
+
+                if (expression.Contains("+"))
+                {
+                    string[] parts = expression.Split('+');
+
+                    // Sprawdź, czy druga część zawiera znak procentu
+                    if (parts.Length > 1 && parts[1].Contains("%"))
+                    {
+                        double numberPart = double.Parse(parts[0].Trim());
+                        
+                        // Usuń znak procentu i zamień na odpowiednie działanie matematyczne
+                        string secondPart = parts[1].Replace("%", "");
+                        // Zamień na odpowiednie działanie matematyczne
+                        double percentValue = double.Parse(secondPart) / 100;
+                        
+                        // Oblicz wynik dodawania z uwzględnieniem procentu
+                        double result = numberPart + (numberPart * percentValue);
+                        return result.ToString();
+                        
+                    }
+                }
+                else if (expression.Contains("-"))
+                {
+                    string[] parts = expression.Split('-');
+
+                    // Sprawdź, czy druga część zawiera znak procentu
+                    if (parts.Length > 1 && parts[1].Contains("%"))
+                    {
+                        double numberPart = double.Parse(parts[0].Trim());
+                        // Usuń znak procentu i zamień na odpowiednie działanie matematyczne
+                        double percentValue = double.Parse(parts[1].Replace("%", "")) / 100.0;
+                        // Oblicz wynik odejmowania z uwzględnieniem procentu
+                        double result = numberPart - (numberPart * percentValue);
+                        // Zwróć wynik jako string
+                        return result.ToString();
+                    }
+                }
+
+
+
+                else if (expression.Contains("*"))
+                {
+                    // Change % -> /100
+                    expression = expression.Replace("%", "/100");
+                }
+
+                else if (expression.Contains("/"))
+                {
+                    string[] parts = expression.Split('/');
+
+                    // Sprawdź, czy druga część zawiera znak procentu
+                    if (parts.Length > 1 && parts[1].Contains("%"))
+                    {
+                        double dividend = double.Parse(parts[0].Trim());
+                        // Usuń znak procentu i zamień na odpowiednie działanie matematyczne
+                        double divisor = double.Parse(parts[1].Replace("%", "")) / 100.0;
+
+                        // Sprawdź, czy dzielnik nie jest zerem
+                        if (divisor != 0)
+                        {
+                            // Oblicz wynik dzielenia z uwzględnieniem procentu
+                            double result = dividend / divisor;
+                            // Zwróć wynik jako string
+                            return result.ToString();
+                        }
+                        else
+                        {
+                            // Dzielenie przez zero - obsłuż błąd
+                            throw new DivideByZeroException("Dzielenie przez zero");
+                        }
+                    }
+                }
+
+
+                //expression = expression.Replace("%", "/100");
+                return expression.ToString();
+            }
+
+           
+
+
+
+
+
+
+
+
+
+            private static string HandlePower(string expression)
+            {
+                // Dzielimy wyrażenie na podstawę i wykładnik
+                string[] parts = expression.Split('^');
+
+                // Konwertujemy obie części na liczby
+                double baseNumber = double.Parse(parts[0].Trim());
+                double exponent = double.Parse(parts[1].Trim());
+
+                // Obliczamy potęgę za pomocą funkcji Math.Pow
+                double elo = Math.Pow(baseNumber, exponent);
+
+                // Zwracamy wynik jako string i przerywamy dalsze obliczenia
+                return elo.ToString();
+                
+            }
+
+
+
+
+
+
+
+
+
+
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -105,6 +247,10 @@ namespace WPF_Calc
 
                 case ")":
                     txtResult.Text += clickedContent;
+                    break;
+
+                case "X^":
+                    txtResult.Text += "^";
                     break;
 
                 case "=":
@@ -188,14 +334,40 @@ namespace WPF_Calc
         {
             // Wyczyść zawartość pola tekstowego
             txtResult.Text = "0";
+            //txtResult.Text = "100-20%";
+        }
 
-            txtResult.Foreground = Brushes.Black;
+        private void Button_Clear_CE(object sender, RoutedEventArgs e)
+        {
+            // Pobierz aktualny tekst z pola tekstowego
+            string currentText = txtResult.Text;
 
+            // Sprawdź długość aktualnego tekstu
+            int length = currentText.Length;
+
+            // Usuń ostatni znak z tekstu w polu tekstowym
+            if (length > 0)
+            {
+                txtResult.Text = currentText.Substring(0, length - 1);
+            }
+
+            // Sprawdź, czy po usunięciu ostatniego znaku pole tekstowe jest puste
+            if (txtResult.Text.Length == 0)
+            {
+                txtResult.Text = "0";
+            }
         }
 
 
 
+<<<<<<< Updated upstream
         private void MenuItem_Option1_Click(object sender, RoutedEventArgs e)
+=======
+
+
+
+        private void MenuItem_Option2_Settings(object sender, RoutedEventArgs e)
+>>>>>>> Stashed changes
         {
             // Obsługa opcji 1
         }

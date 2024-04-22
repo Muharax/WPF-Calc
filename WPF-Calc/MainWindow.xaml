@@ -1,14 +1,19 @@
-﻿<Window x:Class="WPF_Calc.MainWindow"
+﻿<Window x:Name="WINDOW" x:Class="WPF_Calc.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Calc"
         mc:Ignorable="d"
+<<<<<<< Updated upstream
         Title="WPF_Calc" Height="400" Width="270" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+=======
+        Title="WPF_Calc" Height="400" Width="270" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Background="{x:Null}">
+>>>>>>> Stashed changes
 
     <Grid>
 
+<<<<<<< Updated upstream
         <Menu>
             <MenuItem Header="Ustawienia">
                 <MenuItem Header="Wygląd" Click="MenuItem_Option1_Click"/>
@@ -43,6 +48,54 @@
         <Button Content="&lt;" Margin="14,321,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="1,1,1,1" UseLayoutRounding="True" IsEnabled="False" Height="20" HorizontalAlignment="Left"/>
         <TextBox x:Name="txtRead" Margin="0,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="98" IsEnabled="False" HorizontalAlignment="Center" />
 
+=======
+    <Grid x:Name="MAIN">
+        <Menu RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Margin="-1,0,1,0">
+            <Menu.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="1.115"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.731"/>
+                </TransformGroup>
+            </Menu.RenderTransform>
+            <MenuItem Header="Ustawienia" Padding="6,0,6,0" Cursor="Pen" >
+                <MenuItem Header="Preferencje" Click="MenuItem_Option2_Settings" Cursor="Pen"/>
+            </MenuItem>
+
+
+            <MenuItem Header="Info" Cursor="Pen">
+                <MenuItem Header="o Programie" Click="MenuItem_Option3_AboutWindow" Cursor="Pen" />
+            </MenuItem>
+
+
+        </Menu>
+
+        <Button x:Name="KEY_1" Content="1" Margin="14,297,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+        <Button Content="2" Margin="73,297,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+        <Button Content="3" Margin="131,297,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+        <Button Content="4" Margin="14,273,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+        <Button Content="5" Margin="73,273,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+        <Button Content="6" Margin="131,273,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+        <Button Content="7" Margin="14,249,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+        <Button Content="8" Margin="73,249,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+        <Button Content="9" Margin="131,249,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+        <Button x:Name="C" Content="C" Margin="14,199,0,0" VerticalAlignment="Top" Width="53" Click="Button_Clear_Click" Height="19" HorizontalAlignment="Left" AutomationProperties.AccessKey="ESC" FontFamily="Cascadia Mono Light"/>
+        <Button Content="(" Margin="14,224,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+        <Button Content=")" Margin="73,224,0,0" VerticalAlignment="Top" Width="53"  Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+        <Button Content="%" Margin="131,224,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+        <Button Content="+" Margin="190,297,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+        <Button Content="-" Margin="190,273,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+        <Button Content="*" Margin="190,249,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+        <Button Content="/" Margin="190,224,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+        <Button Content="0" Margin="73,321,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+        <Button Content="," Margin="131,321,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+        <Button Content="=" Margin="190,321,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+        <Button Content="X^" Margin="73,199,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+        <TextBox x:Name="txtResult" HorizontalAlignment="Center" Margin="0,139,0,0" Text="0" Width="231" Height="34" FontSize="20" VerticalAlignment="Top" HorizontalContentAlignment="Right" IsReadOnly="True" FontFamily="Segoe UI Semilight"/>
+        <Button Content="CE" Margin="14,321,0,0" VerticalAlignment="Top" Width="53" Click="Button_Clear_CE" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="1,1,1,1" UseLayoutRounding="True" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+        <TextBox x:Name="txtRead" Margin="0,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="98" IsReadOnly="True" HorizontalAlignment="Center" FontFamily="Segoe UI Historic" />
+>>>>>>> Stashed changes
 
     </Grid>
 </Window>
