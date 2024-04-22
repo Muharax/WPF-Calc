@@ -19,6 +19,7 @@ using static System.Net.Mime.MediaTypeNames;
 using System.Threading;
 
 using WPF_Calc;
+using System.Windows.Markup;
 
 
 namespace WPF_Calc
@@ -28,9 +29,14 @@ namespace WPF_Calc
     /// </summary>
     public partial class MainWindow : Window
     {
+
+
         public MainWindow()
         {
             InitializeComponent();
+
+            ThemeManager.ApplyTheme(this);
+            //=========================================================
             string filePath = "wyniki.txt"; // Ścieżka do pliku tekstowego
             if (!File.Exists(filePath))
             {
@@ -42,7 +48,12 @@ namespace WPF_Calc
             string[] lastFiveLines = allLines.Take(5).ToArray();
             string lastFiveLinesString = string.Join(Environment.NewLine, lastFiveLines);
             txtRead.Text = lastFiveLinesString;
+
+
+            //=========================================================
+         
         }
+
 
         public class Calculator
         {
@@ -360,21 +371,13 @@ namespace WPF_Calc
 
 
 
-<<<<<<< Updated upstream
-        private void MenuItem_Option1_Click(object sender, RoutedEventArgs e)
-=======
 
 
 
         private void MenuItem_Option2_Settings(object sender, RoutedEventArgs e)
->>>>>>> Stashed changes
         {
-            // Obsługa opcji 1
-        }
-
-        private void MenuItem_Option2_Click(object sender, RoutedEventArgs e)
-        {
-            // Obsługa opcji 2
+            Settings settings = new Settings(this);
+            settings.Show();
         }
 
         private void MenuItem_Option3_AboutWindow(object sender, RoutedEventArgs e)
