@@ -184,5 +184,20 @@
   <ItemGroup>
     <Resource Include="1.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fav5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="OIG4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="OIG4 %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="fav4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="favicon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

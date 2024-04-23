@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Calc"
         mc:Ignorable="d"
-        Title="Settings" Height="400" Width="270" FontFamily="Bahnschrift Light" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Settings" Height="400" Width="270" FontFamily="Bahnschrift Light" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/fav5.png">
     
     <Grid x:Name="MAIN" Height="390" VerticalAlignment="Top">
         <TextBlock FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift Light" Margin="0,25,0,0"><Run Text="Appearance"/></TextBlock>

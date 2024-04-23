@@ -5,13 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Calc"
         mc:Ignorable="d"
-        Title="AboutWindow" Height="297" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="AboutWindow" Height="400" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/fav5.png">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="/J1 (32).jpg"/>
+            <ImageBrush ImageSource="/OIG4 (1).jpg"/>
         </Grid.Background>
-        <Label Content="Name: WPF-Calc" HorizontalAlignment="Left" VerticalAlignment="Top" Width="132" FontFamily="Bahnschrift Light" FontSize="10" Margin="0,5,0,0"/>
-        <Label Content="Author: Muharax" HorizontalAlignment="Left" VerticalAlignment="Top" Width="132" Margin="0,24,0,0" FontFamily="Bahnschrift Light" FontSize="10"/>
+        <Label Content="Author : Muharax" HorizontalAlignment="Center" VerticalAlignment="Top" Width="88" FontFamily="Bahnschrift Light" FontSize="10" Height="21" Background="{x:Null}">
+            <Label.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Red" Offset="1"/>
+                    <GradientStop Color="Red"/>
+                    <GradientStop Color="#FFFFA400" Offset="0.468"/>
+                </LinearGradientBrush>
+            </Label.Foreground>
+        </Label>
 
     </Grid>
 </Window>

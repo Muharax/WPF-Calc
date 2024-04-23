@@ -17,11 +17,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static System.Net.Mime.MediaTypeNames;
 using System.Threading;
-
 using WPF_Calc;
 using System.Windows.Markup;
-
-
 namespace WPF_Calc
 {
     /// <summary>
@@ -29,12 +26,9 @@ namespace WPF_Calc
     /// </summary>
     public partial class MainWindow : Window
     {
-
-
         public MainWindow()
         {
             InitializeComponent();
-
             ThemeManager.ApplyTheme(this);
             //=========================================================
             string filePath = "wyniki.txt"; // Ścieżka do pliku tekstowego
@@ -45,16 +39,11 @@ namespace WPF_Calc
             }
             string[] allLines = File.ReadAllLines(filePath);
             Array.Reverse(allLines);
-            string[] lastFiveLines = allLines.Take(5).ToArray();
+            string[] lastFiveLines = allLines.Take(6).ToArray();
             string lastFiveLinesString = string.Join(Environment.NewLine, lastFiveLines);
             txtRead.Text = lastFiveLinesString;
-
-
             //=========================================================
-         
         }
-
-
         public class Calculator
         {
             public static string Calculate(string expression)
@@ -65,19 +54,15 @@ namespace WPF_Calc
                     if (expression.Contains("%"))
                     {
                         expression = HandlePercentage(expression);
-                        return expression;
                     }
                     else if (expression.Contains("^"))
                     {
                         expression = HandlePower(expression);
                         return expression;
                     }
-
-
                     // Wykonaj obliczenia
                     DataTable dt = new DataTable();
                     var result = dt.Compute(expression, "");
-
                     // Zwróć wynik jako string
                     return result.ToString();
                 }
@@ -87,45 +72,27 @@ namespace WPF_Calc
                     return "Błąd: " + ex.Message;
                 }
             }
-
-
-
-
-
-
-
-
-
-
-
             private static string HandlePercentage(string expression)
             {
-
-
                 if (expression.Contains("+"))
                 {
                     string[] parts = expression.Split('+');
-
                     // Sprawdź, czy druga część zawiera znak procentu
                     if (parts.Length > 1 && parts[1].Contains("%"))
                     {
                         double numberPart = double.Parse(parts[0].Trim());
-                        
                         // Usuń znak procentu i zamień na odpowiednie działanie matematyczne
                         string secondPart = parts[1].Replace("%", "");
                         // Zamień na odpowiednie działanie matematyczne
                         double percentValue = double.Parse(secondPart) / 100;
-                        
                         // Oblicz wynik dodawania z uwzględnieniem procentu
                         double result = numberPart + (numberPart * percentValue);
                         return result.ToString();
-                        
                     }
                 }
                 else if (expression.Contains("-"))
                 {
                     string[] parts = expression.Split('-');
-
                     // Sprawdź, czy druga część zawiera znak procentu
                     if (parts.Length > 1 && parts[1].Contains("%"))
                     {
@@ -138,26 +105,21 @@ namespace WPF_Calc
                         return result.ToString();
                     }
                 }
-
-
-
                 else if (expression.Contains("*"))
                 {
                     // Change % -> /100
                     expression = expression.Replace("%", "/100");
+                    return expression.ToString();
                 }
-
                 else if (expression.Contains("/"))
                 {
                     string[] parts = expression.Split('/');
-
                     // Sprawdź, czy druga część zawiera znak procentu
                     if (parts.Length > 1 && parts[1].Contains("%"))
                     {
                         double dividend = double.Parse(parts[0].Trim());
                         // Usuń znak procentu i zamień na odpowiednie działanie matematyczne
                         double divisor = double.Parse(parts[1].Replace("%", "")) / 100.0;
-
                         // Sprawdź, czy dzielnik nie jest zerem
                         if (divisor != 0)
                         {
@@ -173,58 +135,26 @@ namespace WPF_Calc
                         }
                     }
                 }
-
-
-                //expression = expression.Replace("%", "/100");
                 return expression.ToString();
             }
-
-           
-
-
-
-
-
-
-
-
-
             private static string HandlePower(string expression)
             {
                 // Dzielimy wyrażenie na podstawę i wykładnik
                 string[] parts = expression.Split('^');
-
                 // Konwertujemy obie części na liczby
                 double baseNumber = double.Parse(parts[0].Trim());
                 double exponent = double.Parse(parts[1].Trim());
-
                 // Obliczamy potęgę za pomocą funkcji Math.Pow
                 double elo = Math.Pow(baseNumber, exponent);
-
                 // Zwracamy wynik jako string i przerywamy dalsze obliczenia
                 return elo.ToString();
-                
             }
-
-
-
-
-
-
-
-
-
-
         }
-
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button clickedButton = sender as Button;
-
             // Pobierz zawartość klikniętego przycisku
             string clickedContent = clickedButton.Content.ToString();
-
             // Dodaj odpowiednią operację w zależności od klikniętego przycisku
             switch (clickedContent)
             {
@@ -238,10 +168,8 @@ namespace WPF_Calc
                 case ",":
                     // Pobierz tekst z kontrolki TextBox
                     string text = txtResult.Text;
-
                     // Sprawdź długość tekstu
                     int length = text.Length;
-
                     // Sprawdź, czy tekst nie jest pusty i czy ostatni znak to przecinek
                     if (length > 0 && text[length - 1] != ',')
                     {
@@ -249,36 +177,22 @@ namespace WPF_Calc
                         txtResult.Text += clickedContent;
                     }
                     // Jeśli ostatni znak to przecinek, nic nie rób
-
                     break;
-
                 case "(":
                     txtResult.Text += clickedContent;
                     break;
-
                 case ")":
                     txtResult.Text += clickedContent;
                     break;
-
                 case "X^":
                     txtResult.Text += "^";
                     break;
-
                 case "=":
                     // Pobierz tekst z kontrolki TextBox
                     string expression = txtResult.Text;
-
-
-
-
-
                     expression = expression.Replace(',', '.');
-
                     // Oblicz wynik wyrażenia matematycznego
                     string result = Calculator.Calculate(expression);
-
-
-
                     string filePath = "wyniki.txt"; // Ścieżka do pliku tekstowego
                     using (StreamWriter writer = File.AppendText(filePath))
                     {
@@ -289,20 +203,15 @@ namespace WPF_Calc
                     string[] lastFiveLines = allLines.Take(5).ToArray();
                     string lastFiveLinesString = string.Join(Environment.NewLine, lastFiveLines);
                     txtRead.Text = lastFiveLinesString;
-
                     // Sprawdź, czy wynik kończy się na ",0" i jeśli tak, usuń ten fragment
                     if (result.EndsWith(",0"))
                     {
                         result = result.Substring(0, result.Length - 2); // Usuń ostatnie dwa znaki
                     }
-
                     // Dodaj wynik do pliku tekstowego
-
-
                     // Wyświetl wynik w kontrolce TextBox
                     txtResult.Text = result;
                     break;
-
                 case "0":
                     if (txtResult.Text == "0")
                     {
@@ -314,73 +223,52 @@ namespace WPF_Calc
                     }
                     break;
                 default:
-
                     if (clickedContent == "0" && txtResult.Text == "0")
                     {
                         txtResult.Text = "0";
                     }
-
-
-
                     // Warunek sprawdzający, czy pole txtResult.Text jest równe "0"
                     if (txtResult.Text == "0" && (clickedContent != "0" && clickedContent != ","))
                     {
                         txtResult.Text = ""; // Zresetuj pole txtResult.Text
                     }
-
                     // Warunek sprawdzający, czy pole txtResult.Text nie jest równe "0" i czy została kliknięta cyfra od 1 do 9
                     if (txtResult.Text != "0" && (clickedContent != "0" && clickedContent != ","))
                     {
                         txtResult.Text += clickedContent; // Dodaj klikniętą cyfrę do pola txtResult.Text
                     }
-
                     break;
             }
         }
-
-
-
-
         private void Button_Clear_Click(object sender, RoutedEventArgs e)
         {
             // Wyczyść zawartość pola tekstowego
             txtResult.Text = "0";
             //txtResult.Text = "100-20%";
         }
-
         private void Button_Clear_CE(object sender, RoutedEventArgs e)
         {
             // Pobierz aktualny tekst z pola tekstowego
             string currentText = txtResult.Text;
-
             // Sprawdź długość aktualnego tekstu
             int length = currentText.Length;
-
             // Usuń ostatni znak z tekstu w polu tekstowym
             if (length > 0)
             {
                 txtResult.Text = currentText.Substring(0, length - 1);
             }
-
             // Sprawdź, czy po usunięciu ostatniego znaku pole tekstowe jest puste
             if (txtResult.Text.Length == 0)
             {
                 txtResult.Text = "0";
             }
         }
-
-
-
-
-
-
         private void MenuItem_Option2_Settings(object sender, RoutedEventArgs e)
         {
             Settings settings = new Settings(this);
             settings.Owner = this;
             settings.ShowDialog();
         }
-
         private void MenuItem_Option3_AboutWindow(object sender, RoutedEventArgs e)
         {
             AboutWindow aboutWindow = new AboutWindow();
@@ -388,5 +276,19 @@ namespace WPF_Calc
             aboutWindow.ShowDialog();
         }
 
+        private void WINDOW_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void btnMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
     }
 }

@@ -14,26 +14,31 @@
     </Style>
 
     <Style TargetType="TextBox">
-        <Setter Property="Background" Value="Black" />
-        <Setter Property="Foreground" Value="White" /> 
+        <Setter Property="Background" Value="#626262" />
+        <Setter Property="Foreground" Value="White" />
     </Style>
 
     
     <Style TargetType="Menu">
-        <Setter Property="Background" Value="Black" />
+        <Setter Property="Background" Value="#626262" />
         <Setter Property="Foreground" Value="White" />
     </Style>
 
     <Style TargetType="MenuItem">
-        <Setter Property="Background" Value="Black" />
+        <Setter Property="Background" Value="#626262" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="BorderThickness" Value="2" />
-        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderBrush" Value="#626262" />
     </Style>
     
 
     <Style TargetType="Button">
-        <Setter Property="Background" Value="Black" />
+        <Setter Property="Background" Value="#626262" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+
+    <Style TargetType="Label">
         <Setter Property="Foreground" Value="White" />
     </Style>
 

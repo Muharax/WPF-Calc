@@ -5,11 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Calc"
         mc:Ignorable="d"
-        Title="WPF_Calc" Height="400" Width="270" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Background="{x:Null}">
+        Title="WPF_Calc" Height="400" Width="270" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Background="{x:Null}" WindowStyle="None" MouseLeftButtonDown="WINDOW_MouseLeftButtonDown">
 
 
     <Grid x:Name="MAIN">
-        <Menu RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Margin="-1,0,1,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="TopbatTitle" Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="0">
+            <Image HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Source="/fav5.png" Margin="0,-1.5,0,0"/>
+            <Label x:Name="Title" Content="WPF-Calc" FontFamily="Consolas" FontStretch="ExtraCondensed" FontStyle="Oblique" FontWeight="SemiBold" FontSize="11" Width="60" Margin="0,-2,0,0"/>
+        </StackPanel>
+
+        <StackPanel x:Name="Topbar" Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="0">
+            <Button x:Name="btnMinimize" Content="_" Width="40" Height="20" BorderBrush="Transparent" Background="Transparent" Click="btnMinimize_Click"/>
+            <Button x:Name="btnClose" Content="X" Width="40" Height="20" BorderBrush="Transparent" Background="Transparent" Click="btnClose_Click" Foreground="Red"/>
+        </StackPanel>
+
+
+
+        <Menu VerticalAlignment="Top" Margin="-1,0,1,0" Grid.Row="1">
             <Menu.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -30,30 +48,41 @@
 
         </Menu>
 
-        <Button x:Name="KEY_1" Content="1" Margin="14,297,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
-        <Button Content="2" Margin="73,297,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
-        <Button Content="3" Margin="131,297,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
-        <Button Content="4" Margin="14,273,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
-        <Button Content="5" Margin="73,273,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
-        <Button Content="6" Margin="131,273,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
-        <Button Content="7" Margin="14,249,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
-        <Button Content="8" Margin="73,249,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
-        <Button Content="9" Margin="131,249,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
-        <Button x:Name="C" Content="C" Margin="14,199,0,0" VerticalAlignment="Top" Width="53" Click="Button_Clear_Click" Height="19" HorizontalAlignment="Left" AutomationProperties.AccessKey="ESC" FontFamily="Cascadia Mono Light"/>
-        <Button Content="(" Margin="14,224,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
-        <Button Content=")" Margin="73,224,0,0" VerticalAlignment="Top" Width="53"  Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
-        <Button Content="%" Margin="131,224,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
-        <Button Content="+" Margin="190,297,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
-        <Button Content="-" Margin="190,273,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
-        <Button Content="*" Margin="190,249,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
-        <Button Content="/" Margin="190,224,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
-        <Button Content="0" Margin="73,321,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
-        <Button Content="," Margin="131,321,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
-        <Button Content="=" Margin="190,321,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
-        <Button Content="X^" Margin="73,199,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
-        <TextBox x:Name="txtResult" HorizontalAlignment="Center" Margin="0,139,0,0" Text="0" Width="231" Height="34" FontSize="20" VerticalAlignment="Top" HorizontalContentAlignment="Right" IsReadOnly="True" FontFamily="Segoe UI Semilight"/>
-        <Button Content="CE" Margin="14,321,0,0" VerticalAlignment="Top" Width="53" Click="Button_Clear_CE" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="1,1,1,1" UseLayoutRounding="True" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
-        <TextBox x:Name="txtRead" Margin="0,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="98" IsReadOnly="True" HorizontalAlignment="Center" FontFamily="Segoe UI Historic" />
+
+        <Grid Grid.Row="2">
+
+
+
+            <TextBox x:Name="txtRead" Margin="0,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" Height="98" IsReadOnly="True" HorizontalAlignment="Center" FontFamily="Segoe UI Historic" />
+            <TextBox x:Name="txtResult" HorizontalAlignment="Center" Margin="0,148,0,0" Text="0" Width="230" Height="34" FontSize="20" VerticalAlignment="Top" HorizontalContentAlignment="Right" IsReadOnly="True" FontFamily="Segoe UI Semilight"/>
+            <Button x:Name="C" Content="C" Margin="20,198,0,0" VerticalAlignment="Top" Width="53" Click="Button_Clear_Click" Height="19" HorizontalAlignment="Left" AutomationProperties.AccessKey="ESC" FontFamily="Cascadia Mono Light" Focusable="False"/>
+
+
+
+            <Button x:Name="KEY_1" Content="1" Margin="20,296,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+            <Button x:Name="KEY_2" Content="2" Margin="79,296,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+            <Button x:Name="KEY_3" Content="3" Margin="137,296,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+            <Button x:Name="KEY_4" Content="4" Margin="20,272,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+            <Button x:Name="KEY_5" Content="5" Margin="79,272,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light"/>
+            <Button x:Name="KEY_6" Content="6" Margin="137,272,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light" Focusable="False"/>
+            <Button x:Name="KEY_7" Content="7" Margin="20,248,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light" Focusable="False"/>
+            <Button x:Name="KEY_8" Content="8" Margin="79,248,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light" Focusable="False"/>
+            <Button x:Name="KEY_9" Content="9" Margin="137,248,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light" Focusable="False"/>
+            <Button x:Name="KEY_L_" Content="(" Margin="20,223,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light" Focusable="False"/>
+            <Button x:Name="KEY_R_" Content=")" Margin="79,223,0,0" VerticalAlignment="Top" Width="53"  Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light" Focusable="False"/>
+            <Button x:Name="Percent" Content="%" Margin="137,223,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light" Focusable="False"/>
+            <Button x:Name="Plus" Content="+" Margin="196,320,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light" Focusable="False"/>
+            <Button x:Name="Minus" Content="-" Margin="196,296,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light" Focusable="False"/>
+            <Button Content="*" Margin="196,272,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light" Focusable="False"/>
+            <Button Content="/" Margin="196,248,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light" Focusable="False"/>
+            <Button Content="0" Margin="20,320,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light" Focusable="False"/>
+            <Button Content="," Margin="80,320,0,0" VerticalAlignment="Top" Width="52" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light" Focusable="False"/>
+            <Button Content="=" Margin="138,320,0,0" VerticalAlignment="Top" Width="53" Click="Button_Click" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light" Focusable="False"/>
+            <Button Content="X^" Margin="196,223,0,0" VerticalAlignment="Top" Width="52" Click="Button_Click" Height="19" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light" Focusable="False"/>
+            <Button Content="CE" Margin="79,198,0,0" VerticalAlignment="Top" Width="53" Click="Button_Clear_CE" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="1,1,1,1" UseLayoutRounding="True" Height="20" HorizontalAlignment="Left" FontFamily="Cascadia Mono Light" Focusable="False"/>
+
+        </Grid>
+        
 
     </Grid>
 </Window>
