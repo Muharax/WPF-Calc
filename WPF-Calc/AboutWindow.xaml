@@ -5,18 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Calc"
         mc:Ignorable="d"
-        Title="AboutWindow" Height="300" Width="400">
+        Title="AboutWindow" Height="297" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/J1 (32).jpg"/>
         </Grid.Background>
-        <Grid HorizontalAlignment="Left" Height="95" Margin="165,142,0,0" VerticalAlignment="Top" Width="225">
-            <Grid.Background>
-                <SolidColorBrush Color="White" Opacity="0"/>
-            </Grid.Background>
-            <Label Content="Nazwa programu: WPF-Calc" Margin="-168,-145,253,206" FontFamily="Bahnschrift Light" FontSize="10" FontWeight="Bold"/>
-            <Label Content="Autor: Muharax" Margin="-168,-128,184,181" FontFamily="Bahnschrift Light" FontSize="10" FontWeight="Bold"/>
-        </Grid>
+        <Label Content="Name: WPF-Calc" HorizontalAlignment="Left" VerticalAlignment="Top" Width="132" FontFamily="Bahnschrift Light" FontSize="10" Margin="0,5,0,0"/>
+        <Label Content="Author: Muharax" HorizontalAlignment="Left" VerticalAlignment="Top" Width="132" Margin="0,24,0,0" FontFamily="Bahnschrift Light" FontSize="10"/>
 
     </Grid>
 </Window>

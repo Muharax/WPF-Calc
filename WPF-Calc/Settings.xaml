@@ -10,11 +10,6 @@
     <Grid x:Name="MAIN" Height="390" VerticalAlignment="Top">
         <TextBlock FontWeight="Bold" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Bahnschrift Light" Margin="0,25,0,0"><Run Text="Appearance"/></TextBlock>
         <CheckBox x:Name="chkDarkMode" Content="Dark Mode" Margin="12,50,151,0" Checked="chkDarkMode_Checked" Unchecked="chkDarkMode_Unchecked" VerticalAlignment="Top" BorderThickness="1,1,1,1" ClipToBounds="True" SnapsToDevicePixels="True" Height="20"/>
-        <TextBlock FontSize="16" Margin="0,68,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"><Run Text="Language"/></TextBlock>
-        <ComboBox x:Name="cmbLanguage" SelectionChanged="cmbLanguage_SelectionChanged" Margin="14,92,0,282" HorizontalAlignment="Left" Width="158">
-            <ComboBoxItem Content="Polish" Tag="pl-PL"/>
-            <ComboBoxItem Content="English" Tag="pl-PL"/>
-        </ComboBox>
     </Grid>
     
 </Window>

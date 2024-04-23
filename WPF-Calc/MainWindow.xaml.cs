@@ -377,13 +377,15 @@ namespace WPF_Calc
         private void MenuItem_Option2_Settings(object sender, RoutedEventArgs e)
         {
             Settings settings = new Settings(this);
-            settings.Show();
+            settings.Owner = this;
+            settings.ShowDialog();
         }
 
         private void MenuItem_Option3_AboutWindow(object sender, RoutedEventArgs e)
         {
             AboutWindow aboutWindow = new AboutWindow();
-            aboutWindow.Show();
+            aboutWindow.Owner = this;
+            aboutWindow.ShowDialog();
         }
 
     }
